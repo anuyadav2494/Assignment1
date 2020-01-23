@@ -15,6 +15,7 @@ namespace Assignment1_Spring2020
             string s = "09:15:35PM";
             string t = UsfTime(s);
             Console.WriteLine(t);
+         
 
             int n3 = 110;
             int k = 11;
@@ -85,7 +86,27 @@ namespace Assignment1_Spring2020
         {
             try
             {
-                //Write your code here .!!
+                string[] time = s.Split(':');
+                int e_hours = Int32.Parse(time[0]);
+                int e_minutes = Int32.Parse(time[1]);
+                string seconds = time[2].Remove(2,2);
+                int e_seconds = Int32.Parse(seconds);
+                int e_hours_24hr;
+                if (s.Contains("PM"))
+                {
+                     e_hours_24hr = e_hours + 12;
+                }
+                else
+                {
+                    e_hours_24hr = e_hours;
+                }
+                Console.WriteLine(Environment.NewLine);
+                    int total_seconds = e_hours_24hr* 60 * 60 + e_minutes * 60 + e_seconds;
+                    int USF_hours = total_seconds / (60 * 45);
+                    int USF_minutes = (total_seconds % (60 * 45)) / 45;
+                    int USF_seconds = (total_seconds % (60 * 45)) % 45;     
+                Console.WriteLine("The time in USF planet is " + USF_hours + " : " + USF_minutes + " : " + USF_seconds);
+
             }
             catch
             {
@@ -104,19 +125,8 @@ namespace Assignment1_Spring2020
                     if (i % k != 0)
                     {
 
-                        if (i % 3 == 0)
-                        {
-                            Console.Write(" U ");
-                        }
-                        else if (i % 5 == 0)
-                        {
-                            Console.Write(" S ");
-                        }
-                        else if (i % 7 == 0)
-                        {
-                            Console.Write(" F ");
-                        }
-                        else if (i % 3 == 0 && i % 5 == 0)
+                        
+                        if (i % 3 == 0 && i % 5 == 0)
                         {
                             Console.Write(" US ");
                         }
@@ -128,6 +138,18 @@ namespace Assignment1_Spring2020
                         {
                             Console.Write(" UF ");
 
+                        }
+                        else if (i % 3 == 0)
+                        {
+                            Console.Write(" U ");
+                        }
+                        else if (i % 5 == 0)
+                        {
+                            Console.Write(" S ");
+                        }
+                        else if (i % 7 == 0)
+                        {
+                            Console.Write(" F ");
                         }
 
                         else
