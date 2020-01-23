@@ -53,8 +53,26 @@ namespace Assignment1_Spring2020
         private static void PrintSeries(int n2)
         {
             try
+                
             {
-                //Write your code here .!!
+                int k = 0;
+                Console.Write("Series is:");
+                for (int i=1;i<=n2;i++)
+                {
+                    
+                   // int number;
+                    k = k + i;
+                    if (k == 1) {
+                        Console.Write( k);
+                    }
+                    else
+                    {
+                        Console.Write("," + k);
+                    }
+                   
+
+                }
+              
             }
             catch
             {
