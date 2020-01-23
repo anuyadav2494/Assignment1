@@ -98,8 +98,53 @@ namespace Assignment1_Spring2020
         public static void UsfNumbers(int n3, int k)
         {
             try
-            {
-                // Write your code here
+            { 
+                for(int  i=1;i<=n3;i++)
+                {
+                    if (i % k != 0)
+                    {
+
+                        if (i % 3 == 0)
+                        {
+                            Console.Write(" U ");
+                        }
+                        else if (i % 5 == 0)
+                        {
+                            Console.Write(" S ");
+                        }
+                        else if (i % 7 == 0)
+                        {
+                            Console.Write(" F ");
+                        }
+                        else if (i % 3 == 0 && i % 5 == 0)
+                        {
+                            Console.Write(" US ");
+                        }
+                        else if (i % 5 == 0 && i % 7 == 0)
+                        {
+                            Console.Write(" SF ");
+                        }
+                        else if (i % 3 == 0 && i % 7 == 0)
+                        {
+                            Console.Write(" UF ");
+
+                        }
+
+                        else
+                        {
+                            Console.Write(" " + i + " ");
+                        }
+
+                    }
+                    else
+                    {
+                        Console.Write(i);
+                        Console.WriteLine("\r\n");
+                    }
+                    
+                }
+                
+                
             }
             catch
             {
