@@ -35,7 +35,7 @@ namespace Assignment1_Spring2020
 
             Console.WriteLine();
             Console.WriteLine("------Output for Question 6-------");
-            int n4 = 4;
+            int n4 = 6;
             Stones(n4);
             Console.ReadLine();
 
