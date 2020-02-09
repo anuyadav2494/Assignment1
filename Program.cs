@@ -7,29 +7,35 @@ namespace Assignment1_Spring2020
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Print Pattern Output");
+            Console.WriteLine("------Output for Question 1-------");
             int n = 5;
             PrintPattern(n);
-            
 
-            int n2 = 6; 
+            Console.WriteLine("------Output for Question 2-------");
+            int n2 = 4; 
             PrintSeries(n2);
 
+            Console.WriteLine();
+            Console.WriteLine("------Output for Question 3-------");
             string s = "09:15:35PM";
             string t = UsfTime(s);
             Console.WriteLine(t);
-         
 
+            Console.WriteLine();
+            Console.WriteLine("------Output for Question 4-------");
             int n3 = 110;
             int k = 11;
             UsfNumbers(n3, k);
 
+            Console.WriteLine();
+            Console.WriteLine("------Output for Question 5-------");
             string[] words = new string[] { "abcd", "dcba", "lls", "s", "sssll" };
-          //string[] words = new string[] { "bat", "tab", "cat" };
+          
             PalindromePairs(words);
-            //Console.ReadLine();
 
-            int n4 = 5;
+            Console.WriteLine();
+            Console.WriteLine("------Output for Question 6-------");
+            int n4 = 4;
             Stones(n4);
             Console.ReadLine();
 
@@ -38,7 +44,7 @@ namespace Assignment1_Spring2020
 
 
         static void PrintPattern(int n)
-        {
+        { 
            
             try
             {
@@ -79,8 +85,8 @@ namespace Assignment1_Spring2020
             try
                 
             {
-                Console.WriteLine("Output of PrintSeries for n2 = " +n2);
-                Console.WriteLine();
+                
+           
                 //Checking if n2 is a positive number
                 if (n2 < 1)
                     return;
@@ -99,7 +105,7 @@ namespace Assignment1_Spring2020
                         Console.Write("," + k);
                     }
                 }
-              
+                Console.WriteLine();
             }
             catch
             {
@@ -112,11 +118,8 @@ namespace Assignment1_Spring2020
         {
             try
             {
-                Console.WriteLine();
-                Console.WriteLine();
-                Console.WriteLine("Output for Earth to USF time");
-                
-                //Splitting the input based on delimiter ":" and creates a array of substring
+               
+               //Splitting the input based on delimiter ":" and creates a array of substring
                 string[] time = s.Split(':');
                 //Storing the element at index 0 in the array as e_hours and converting to int
                 int e_hours = Int32.Parse(time[0]);
@@ -139,7 +142,7 @@ namespace Assignment1_Spring2020
                     {
                         e_hours_24hr = e_hours;
                     }
-                    Console.WriteLine(Environment.NewLine);
+                   // Console.WriteLine(Environment.NewLine);
                     //Calculate total numbers of seconds of input
                     int total_seconds = e_hours_24hr * 60 * 60 + e_minutes * 60 + e_seconds;
                     //Convert the total seconds to hours in USF system(USF system 36hrs,60minutes and 45 seconds)
@@ -176,7 +179,7 @@ namespace Assignment1_Spring2020
                 if (k < 1)
                     return;
                 Console.WriteLine();
-                Console.WriteLine("Output for UsfNumbers : ");
+                
 
                 for(int  i=1;i<=n3;i++)
                 {
@@ -244,7 +247,7 @@ namespace Assignment1_Spring2020
             try
             {
                 Console.WriteLine();
-                Console.WriteLine("Output of Palindrome Pairs");
+                
                 int n = words.Length;
                 Console.Write("[");
                 
@@ -320,7 +323,7 @@ namespace Assignment1_Spring2020
             catch
             {
 
-                Console.WriteLine("Exception occured while computing     PalindromePairs()");
+                Console.WriteLine("Exception occured while computing  PalindromePairs()");
             }
         }
         
@@ -328,20 +331,27 @@ namespace Assignment1_Spring2020
         {
             try
             {  
-                Console.WriteLine();
-                Console.WriteLine("Output of Stones game");
+                //Console.WriteLine();
+              
                 ArrayList a = new ArrayList();
                 Random randomNumbers = new Random();
                 /*As player 1 can pick any stomes from 1 to 3,
                 we are storing random number in the range(1,3) in i variable*/
                 int i = randomNumbers.Next(1, 3 + 1);
                 //Add value of i in arraylist
-                a.Add(i);
+                
                 // Now P2 can pick from the remaining stones i.e (totalstones-number of stones picked by P1)
                 int m = (n4 - i);
+                a.Add(i);
+                //If 3 or less than 3 stones are left in the bag,then P2 wins
+                if(m <= 3)
+                {
+                    a.Add(m);
+                    
+                }
                 /*If number of stones left after P1 picks is greater than 3,then P2 can pick to continue the game
                 else P2 wins(if stones left are less or equal to 3 then P2 wins)*/
-                  while (m > 3)
+                while (m > 3)
                   {
                         //Number of stones picked by P2 is generated randomly within the range(1,3)
                         int p = randomNumbers.Next(1, 3 + 1);
