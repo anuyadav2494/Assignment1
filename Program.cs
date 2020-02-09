@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 
 namespace Assignment1_Spring2020
 {
@@ -14,7 +15,7 @@ namespace Assignment1_Spring2020
             int n2 = 6; 
             PrintSeries(n2);
 
-            string s = "09:85:35PM";
+            string s = "09:15:35PM";
             string t = UsfTime(s);
             Console.WriteLine(t);
          
@@ -113,7 +114,7 @@ namespace Assignment1_Spring2020
             {
                 Console.WriteLine();
                 Console.WriteLine();
-                Console.WriteLine("Output for Earth to USF time :");
+                Console.WriteLine("Output for Earth to USF time");
                 
                 //Splitting the input based on delimiter ":" and creates a array of substring
                 string[] time = s.Split(':');
@@ -314,7 +315,7 @@ namespace Assignment1_Spring2020
                     }
                 }
                 Console.Write(" ]");
-
+                Console.WriteLine();
             }
             catch
             {
@@ -322,23 +323,63 @@ namespace Assignment1_Spring2020
                 Console.WriteLine("Exception occured while computing     PalindromePairs()");
             }
         }
-
+        
         public static void Stones(int n4)
         {
             try
-            {
+            {  
                 Console.WriteLine();
-                Console.WriteLine("Stones game");
-                int m = n4 - 1;
-                if((n4-1)%4==0)
-                {
-                    Console.WriteLine("You win");
-                    
-                }
-                else
-                {
-                    Console.WriteLine("You Loose");
-                }
+                Console.WriteLine("Output of Stones game");
+                ArrayList a = new ArrayList();
+                Random randomNumbers = new Random();
+                /*As player 1 can pick any stomes from 1 to 3,
+                we are storing random number in the range(1,3) in i variable*/
+                int i = randomNumbers.Next(1, 3 + 1);
+                //Add value of i in arraylist
+                a.Add(i);
+                // Now P2 can pick from the remaining stones i.e (totalstones-number of stones picked by P1)
+                int m = (n4 - i);
+                /*If number of stones left after P1 picks is greater than 3,then P2 can pick to continue the game
+                else P2 wins(if stones left are less or equal to 3 then P2 wins)*/
+                  while (m > 3)
+                  {
+                        //Number of stones picked by P2 is generated randomly within the range(1,3)
+                        int p = randomNumbers.Next(1, 3 + 1);
+                    // Add value of p in list
+                        a.Add(p);
+                    // Now calculate remaining stones
+                        m = m - p;
+                    //If remaining stones are less or equal to 3, then P1 wins else game continues
+                        if (m <= 3)
+                        {   //Add value of m to ArrayList
+                            a.Add(m);
+                        }
+
+                  }
+                   /* After getting the elements of arrayList,if the array has even number of elements
+                    then P2 wins as P2 picks the last stone else P1 wins*/
+                    int total = a.Count;
+                    if (total % 2 == 0)
+                    {
+                        Console.Write("Array of moves of both players [");
+                    //Print the array
+                        foreach (int z in a)
+                            Console.Write(" " + z );
+                        Console.Write("]");
+                        Console.WriteLine();
+                        Console.WriteLine("Result of the Game :You Loose");
+                    }
+                    else
+                    {
+                        Console.Write(" Array of moves of both players [");
+                        foreach (int z in a)
+                            Console.Write(" " + z);
+                        Console.Write("]");
+                        Console.WriteLine();
+                        Console.WriteLine("Result of the Game : You Win");
+                    }
+
+
                 
             }
             catch
